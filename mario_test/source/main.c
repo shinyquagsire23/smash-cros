@@ -6,8 +6,8 @@ extern void* _Z8NewmarioPv_orig(CommonTranslated_fighter* fighter);
 
 // We're intentionally avoiding .bss here, .bss is extremely touchy at the moment
 void* vtable_test[44] = {-1};
-void* intercept_init_ptr = -1;
-void* original_init_ptr = -1;
+void* intercept_funbox_init_ptr = -1;
+void* original_funbox_init_ptr = -1;
 
 int nullsub(CommonTranslated_fighter* fighter)
 {
@@ -18,9 +18,9 @@ int nullsub(CommonTranslated_fighter* fighter)
 
 void intercept_init(CommonTranslated_fighter* fighter)
 {
-   if (original_init_ptr)
+   if (original_funbox_init_ptr)
    {
-      void* (*func)(void *arg1) = (void*)original_init_ptr;
+      void* (*func)(void *arg1) = (void*)original_funbox_init_ptr;
       func(fighter);
    }
 
@@ -53,13 +53,13 @@ void* _Z8NewmarioPv(CommonTranslated_fighter* fighter)
    _Z8NewmarioPv_orig(fighter);
    
    // Call our init once
-   original_init_ptr = 0;
+   original_funbox_init_ptr = 0;
    intercept_init(fighter);
 
    // Change the init pointer
-   intercept_init_ptr = intercept_init;
-   original_init_ptr = *fighter->init;
-   fighter->init = &intercept_init_ptr;
+   intercept_funbox_init_ptr = intercept_init;
+   original_funbox_init_ptr = *fighter->funbox_init;
+   fighter->funbox_init = &intercept_funbox_init_ptr;
    
    // Post-hook stuff
    debug_print("Mario Instantiated!\n");
