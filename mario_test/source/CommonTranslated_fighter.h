@@ -9,6 +9,39 @@ typedef struct
    uint32_t* arg_stack;
 } MSCState;
 
+enum MSCInput
+{
+   INPUT_ATTACK_NEUTRAL   = 0x1,
+   INPUT_ATTACK_SIDE      = 0x2,
+   INPUT_ATTACK_UP        = 0x4,
+   INPUT_ATTACK_DOWN      = 0x8,
+   INPUT_SMASH_NEUTRAL    = 0x10,
+   INPUT_SMASH_SIDE       = 0x20,
+   INPUT_SMASH_UP         = 0x40,
+   INPUT_SMASH_DOWN       = 0x80,
+   INPUT_SPECIAL_NEUTRAL  = 0x1000,
+   INPUT_SPECIAL_SIDE     = 0x2000,
+   INPUT_SPECIAL_UP       = 0x4000,
+   INPUT_SPECIAL_DOWN     = 0x8000,
+   INPUT_DASH_ATTACK      = 0x40000,
+   INPUT_DASH_ATTACK_LEFT = 0x80000,
+   INPUT_UP               = 0x100000,
+   INPUT_PIVOT            = 0x200000,
+   INPUT_SHIELD           = 0x400000,
+   INPUT_RIGHT            = 0x8000000, // actual is 0x8020000
+   INPUT_LEFT             = 0x10000000, // actual is 0x100c0000
+   INPUT_GRAB             = 0x20000000,
+   
+   INPUT_GRAB_BUTTON = INPUT_GRAB | INPUT_SHIELD | INPUT_ATTACK_NEUTRAL,
+};
+
+enum MSCTaunt
+{
+   TAUNT_SIDE = 0x1,
+   TAUNT_UP   = 0x2,
+   TAUNT_DOWN = 0x4,
+};
+
 typedef struct CommonTranslated_fighter
 {
    void** funbox_init;
@@ -41,14 +74,14 @@ typedef struct CommonTranslated_fighter
    uint32_t (*sub_fighter_change_motion_customize)(struct CommonTranslated_fighter *fighter, int arg1);
    uint32_t unk_70;
    uint32_t unk_74;
-   uint32_t unk_78_input; // Has bits for attack, special attack, smash, jump, shield, grab
+   uint32_t input; // MSCInput
    uint32_t unk_7c;
    uint32_t unk_80;
    uint32_t unk_84;
    uint32_t unk_88;
    uint32_t unk_8c;
    uint32_t unk_90;
-   uint32_t unk_94_taunt_input; // Side is bit0, up is bit1, down is bit2
+   uint32_t taunt_input; // MSCTaunt
    float stick_y;
    uint32_t unk_9c;
    uint32_t unk_a0;
