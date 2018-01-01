@@ -991,7 +991,7 @@ typedef struct CommonTranslated_fighter
    uint32_t (*vtable_6_2)(struct CommonTranslated_fighter *fighter);
    uint32_t (*vtable_7_2)(struct CommonTranslated_fighter *fighter);
    uint32_t (*vtable_8_2)(struct CommonTranslated_fighter *fighter);
-   uint32_t (*vtable_9_2)(struct CommonTranslated_fighter *fighter);
+   uint32_t (*vtable_attack_combo_uniq_chk_2)(struct CommonTranslated_fighter *fighter);
    uint32_t (*vtable_10_2)(struct CommonTranslated_fighter *fighter);
    uint32_t (*vtable_11_2)(struct CommonTranslated_fighter *fighter);
    uint32_t (*vtable_12_2)(struct CommonTranslated_fighter *fighter);
