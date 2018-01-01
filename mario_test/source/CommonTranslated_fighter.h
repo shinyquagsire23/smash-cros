@@ -28,7 +28,7 @@ enum MSCInput
    INPUT_DASH_TURN        = 0x80000, // actual is 0xXX0c0000 when turning
    INPUT_UP               = 0x100000,
    INPUT_JUMP             = 0x200000,
-   INPUT_SHIELD           = 0x400000,
+   INPUT_SHIELD           = 0x400000, // air dodge is just this
    INPUT_DODGE_NEUTRAL    = 0x1000000,
    INPUT_DODGE_LEFT       = 0x2000000,
    INPUT_DODGE_RIGHT      = 0x4000000,
