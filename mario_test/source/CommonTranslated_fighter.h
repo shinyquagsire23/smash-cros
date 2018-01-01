@@ -23,13 +23,17 @@ enum MSCInput
    INPUT_SPECIAL_SIDE     = 0x2000,
    INPUT_SPECIAL_UP       = 0x4000,
    INPUT_SPECIAL_DOWN     = 0x8000,
-   INPUT_DASH_ATTACK      = 0x40000,
-   INPUT_DASH_ATTACK_LEFT = 0x80000,
+   INPUT_DASH_FORWARD     = 0x20000,
+   INPUT_DASH_BACKWARD    = 0x40000,
+   INPUT_DASH_TURN        = 0x80000, // actual is 0xXX0c0000 when turning
    INPUT_UP               = 0x100000,
-   INPUT_PIVOT            = 0x200000,
+   INPUT_JUMP             = 0x200000,
    INPUT_SHIELD           = 0x400000,
-   INPUT_RIGHT            = 0x8000000, // actual is 0x8020000
-   INPUT_LEFT             = 0x10000000, // actual is 0x100c0000
+   INPUT_DODGE_NEUTRAL    = 0x1000000,
+   INPUT_DODGE_LEFT       = 0x2000000,
+   INPUT_DODGE_RIGHT      = 0x4000000,
+   INPUT_RIGHT            = 0x8000000, // actual is 0x8020000 when right = forward
+   INPUT_LEFT             = 0x10000000, 
    INPUT_GRAB             = 0x20000000,
    
    INPUT_GRAB_BUTTON = INPUT_GRAB | INPUT_SHIELD | INPUT_ATTACK_NEUTRAL,
