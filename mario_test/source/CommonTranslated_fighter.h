@@ -747,7 +747,7 @@ typedef struct CommonTranslated_fighter
    uint32_t (*vtable_18)(struct CommonTranslated_fighter *fighter);
    uint32_t (*vtable_19)(struct CommonTranslated_fighter *fighter);
    uint32_t (*status_AirLasso)(struct CommonTranslated_fighter *fighter);
-   uint32_t (*vtable_21)(struct CommonTranslated_fighter *fighter, int unk);
+   uint32_t (*vtable_AirLassoFailure)(struct CommonTranslated_fighter *fighter, int unk);
    uint32_t (*status_AirLassoHang)(struct CommonTranslated_fighter *fighter);
    uint32_t (*status_AirLassoReach)(struct CommonTranslated_fighter *fighter);
    uint32_t (*status_AirLassoRewind)(struct CommonTranslated_fighter *fighter);
@@ -1003,7 +1003,7 @@ typedef struct CommonTranslated_fighter
    uint32_t (*vtable_18_2)(struct CommonTranslated_fighter *fighter);
    uint32_t (*vtable_19_2)(struct CommonTranslated_fighter *fighter);
    uint32_t (*status_AirLasso_2)(struct CommonTranslated_fighter *fighter);
-   uint32_t (*vtable_21_2)(struct CommonTranslated_fighter *fighter);
+   uint32_t (*vtable_AirLassoFailure_2)(struct CommonTranslated_fighter *fighter);
    uint32_t (*status_AirLassoHang_2)(struct CommonTranslated_fighter *fighter);
    uint32_t (*status_AirLassoReach_2)(struct CommonTranslated_fighter *fighter);
    uint32_t (*status_AirLassoRewind_2)(struct CommonTranslated_fighter *fighter);
