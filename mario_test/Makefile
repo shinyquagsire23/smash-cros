@@ -13,7 +13,7 @@ CC = arm-none-eabi-gcc
 LINK = arm-none-eabi-ld
 AS = arm-none-eabi-as
 OBJCOPY = arm-none-eabi-objcopy
-CFLAGS += -g -Wall -std=c99 -march=armv6 -O0 -I"$(CTRULIB)/include" -I$(DEVKITPRO)/libnds/include
+CFLAGS += -g -Wall -std=c99 -march=armv6 -mfloat-abi=hard -O0 -I"$(CTRULIB)/include" -I$(DEVKITPRO)/libnds/include
 LDFLAGS += --script=ccd00.ld -shared -L"$(CTRULIB)/lib"
 ELFINJECT = $(CROTOOLS)/elfinject/elfinject
 ELF2CRO = $(CROTOOLS)/elf2cro/elf2cro
