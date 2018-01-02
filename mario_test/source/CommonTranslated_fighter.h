@@ -14,27 +14,27 @@ typedef struct
    float (*variable_fget)(struct MSCUnk3* unk, uint32_t variable);
    void (*variable_fset)(struct MSCUnk3* unk, uint32_t variable, float value);
    void (*unk_28)(struct MSCUnk3* unk); // nullptr?
-   void (*variable_frand)(struct MSCUnk3* unk);
+   void (*variable_frand)(struct MSCUnk3* unk, float low, float high);
    void (*variable_fadd)(struct MSCUnk3* unk, uint32_t variable, float value_toadd);
    void (*variable_fsub)(struct MSCUnk3* unk, uint32_t variable, float value_tosub);
    void (*variable_fmul)(struct MSCUnk3* unk, uint32_t variable, float value_tomul);
    void (*variable_fdiv)(struct MSCUnk3* unk, uint32_t variable, float value_todiv);
-   void (*variable_iget)(struct MSCUnk3* unk);
-   void (*variable_iset)(struct MSCUnk3* unk);
+   int32_t (*variable_iget)(struct MSCUnk3* unk, uint32_t variable);
+   void (*variable_iset)(struct MSCUnk3* unk, uint32_t variable);
    void (*unk_48)(struct MSCUnk3* unk); // nullptr?
-   void (*variable_irand)(struct MSCUnk3* unk);
-   void (*variable_iinc)(struct MSCUnk3* unk);
-   void (*variable_idec)(struct MSCUnk3* unk);
-   void (*variable_iadd)(struct MSCUnk3* unk);
-   void (*variable_imul)(struct MSCUnk3* unk);
-   void (*variable_idiv)(struct MSCUnk3* unk);
-   void (*unk_64)(struct MSCUnk3* unk);
-   void (*unk_68)(struct MSCUnk3* unk);
+   int32_t (*variable_irand)(struct MSCUnk3* unk, int32_t low, int32_t high);
+   void (*variable_iinc)(struct MSCUnk3* unk, uint32_t variable);
+   void (*variable_idec)(struct MSCUnk3* unk, uint32_t variable);
+   void (*variable_iadd)(struct MSCUnk3* unk, uint32_t variable, int32_t value_toadd);
+   void (*variable_isub)(struct MSCUnk3* unk, uint32_t variable, int32_t value_tosub);
+   void (*variable_imul)(struct MSCUnk3* unk, uint32_t variable, int32_t value_tomul);
+   void (*variable_idiv)(struct MSCUnk3* unk, uint32_t variable, int32_t value_todiv);
+   bool (*variable_iceil_dec)(struct MSCUnk3* unk, uint32_t variable, int32_t ceil); // decrements until variable <= ceil, then returns true
    void (*unk_6c)(struct MSCUnk3* unk); // nullptr?
-   void (*unk_70)(struct MSCUnk3* unk);
-   void (*unk_74)(struct MSCUnk3* unk);
+   void (*unk_70)(struct MSCUnk3* unk); // bit check related
+   void (*unk_74)(struct MSCUnk3* unk); // bit set related
    void (*unk_78)(struct MSCUnk3* unk); // nullptr?
-   void (*unk_7c)(struct MSCUnk3* unk);
+   void (*unk_7c)(struct MSCUnk3* unk); // bit xor related
    void (*unk_80)(struct MSCUnk3* unk); // nullptr?
    void (*unk_84)(struct MSCUnk3* unk);
    void (*unk_88)(struct MSCUnk3* unk);
