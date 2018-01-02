@@ -3,7 +3,7 @@
 typedef struct
 {
    uint32_t unk_0;
-   uint32_t unk_4;
+   uint32_t* unk_4_variable_related;
    void *active_function;
    uint32_t args[3];
    uint32_t* arg_stack;
@@ -73,6 +73,13 @@ enum MSCDigitalButtonInput
    BUTTON_GRAB_UP   = BUTTON_SHIELD_UP | BUTTON_ATTACK_UP,
 };
 
+enum MSCAirGround
+{
+   AIRGROUND_GROUND = 0,
+   AIRGROUND_LEDGE  = 1,
+   AIRGROUND_AIR    = 2,
+};
+
 typedef struct CommonTranslated_fighter
 {
    void** funbox_init;
@@ -82,67 +89,67 @@ typedef struct CommonTranslated_fighter
    uint32_t unk_10;
    uint32_t* unk_14;
    uint32_t unk_18;
-   uint32_t unk_1c;
-   uint32_t unk_20;
-   float shield_health;
-   uint32_t unk_28;
-   uint32_t unk_2c;
-   uint32_t unk_30;
-   uint32_t unk_34;
+   uint32_t character_id;
+   uint32_t current_action_script;
+   uint32_t unk_24_per_frame_related;
+   uint32_t action_current;
+   uint32_t action_previous;
+   uint32_t action_next;
+   uint32_t action_max;
    uint32_t unk_38;
-   float x_pos;
-   float x_pos_2;
+   float action_timer;
+   float action_timer_2;
    uint32_t (*sub_fighter_change_status)(struct CommonTranslated_fighter *fighter, int arg1, int arg2);
    uint32_t (*unk_48_reset_e0_54)(struct CommonTranslated_fighter *fighter);
    uint32_t (*unk_4c)(struct CommonTranslated_fighter *fighter);
    uint32_t (*sub_fighter_line_status_system)(struct CommonTranslated_fighter *fighter);
-   uint32_t unk_54;
-   uint32_t unk_58;
+   uint32_t (*funbox_every_frame)(struct CommonTranslated_fighter *fighter);
+   uint32_t (*funbox_every_frame_2)(struct CommonTranslated_fighter *fighter);
    uint32_t unk_5c;
-   uint32_t unk_60;
-   uint32_t unk_64;
-   float y_pos;
+   uint32_t air_ground_status;
+   uint32_t air_ground_status_prev;
+   float animation_frame;
    uint32_t (*sub_fighter_change_motion_customize)(struct CommonTranslated_fighter *fighter, int arg1);
    uint32_t unk_70;
-   uint32_t unk_74;
+   uint32_t (*unk_74)(struct CommonTranslated_fighter *fighter);
    uint32_t input; // MSCInput
-   uint32_t unk_7c;
-   uint32_t unk_80;
-   uint32_t unk_84;
-   uint32_t unk_88;
-   uint32_t unk_8c;
-   uint32_t unk_90;
+   uint32_t unk_7c; // 19
+   uint32_t unk_80; // 1a
+   uint32_t unk_84; // 1b
+   uint32_t unk_88; // 1c
+   uint32_t unk_8c; // 1d inputs
+   uint32_t unk_90; // 1e
    uint32_t axis_input; // MSCDigitalAxisInput
    float stick_y;
-   uint32_t unk_9c;
-   uint32_t unk_a0;
-   uint32_t unk_a4;
-   uint32_t unk_a8;
-   uint32_t unk_ac;
+   uint32_t unk_9c; // 21
+   uint32_t (*unk_a0)(struct CommonTranslated_fighter *fighter); // ledge-grab related apparently
+   uint32_t unk_a4; // 23
+   uint32_t unk_a8; // 24
+   uint32_t unk_ac; // 25
    uint32_t button_input; //MSCDigitalButtonInput
-   uint32_t unk_b4;
-   uint32_t unk_b8;
-   uint32_t unk_bc;
-   uint32_t unk_c0;
-   uint32_t unk_c4;
-   uint32_t unk_c8;
-   uint32_t unk_cc;
-   uint32_t unk_d0_dash_count_idk;
-   uint32_t unk_d4;
+   uint32_t unk_b4; // 27
+   uint32_t unk_b8; // 28
+   uint32_t unk_bc; // 29
+   uint32_t unk_c0; // 2a
+   uint32_t unk_c4; // 2b
+   uint32_t unk_c8; // 2c
+   uint32_t unk_cc; // inputs
+   uint32_t stick_x_active_frames;
+   uint32_t stick_y_active_frames; // s8, -1 when in
    float stick_x;
    int32_t stick_y_digital;
-   float unk_e0;
-   uint32_t unk_e4;
-   uint32_t unk_e8;
-   uint32_t unk_ec;
-   uint32_t unk_f0;
-   uint32_t unk_f4;
-   uint32_t unk_f8;
-   uint32_t unk_fc;
-   uint32_t unk_100;
-   uint32_t unk_104;
-   uint32_t unk_108;
-   uint32_t unk_10c;
+   float unk_e0; // 32
+   uint32_t animcmd_SpecialN;
+   uint32_t animcmd_SpecialS;
+   uint32_t animcmd_SpecialHi;
+   uint32_t animcmd_SpecialLw;
+   uint32_t animcmd_Final;
+   uint32_t (*unk_f8)(struct CommonTranslated_fighter *fighter); // 38
+   uint32_t (*unk_fc)(struct CommonTranslated_fighter *fighter); // 39
+   uint32_t (*unk_100)(struct CommonTranslated_fighter *fighter); // 3a
+   uint32_t (*unk_104)(struct CommonTranslated_fighter *fighter); // 3b
+   uint32_t (*unk_108)(struct CommonTranslated_fighter *fighter); // 3c
+   uint32_t (*unk_10c)(struct CommonTranslated_fighter *fighter); // 3d
    uint32_t* unk_110;
    uint32_t* unk_114;
    uint32_t* unk_118;
@@ -2496,7 +2503,7 @@ typedef struct CommonTranslated_fighter
    uint32_t (*vtable_1696)(struct CommonTranslated_fighter *fighter);
    uint32_t (*vtable_1697)(struct CommonTranslated_fighter *fighter);
    uint32_t (*vtable_1698)(struct CommonTranslated_fighter *fighter);
-   uint32_t (*vtable_1699)(struct CommonTranslated_fighter *fighter);
+   uint32_t (*vtable_1699)(struct CommonTranslated_fighter *fighter); // calls per-frame funcs
    uint32_t (*vtable_1700)(struct CommonTranslated_fighter *fighter);
    uint32_t (*vtable_1701)(struct CommonTranslated_fighter *fighter);
    uint32_t (*vtable_1702)(struct CommonTranslated_fighter *fighter);
