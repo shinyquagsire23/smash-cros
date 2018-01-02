@@ -1,9 +1,93 @@
 #include <stdint.h>
 
+// BD3A88
+typedef struct
+{
+   void (*unk_0)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_4)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_8)(struct MSCUnk3* unk);
+   void (*unk_c)(struct MSCUnk3* unk);
+   void (*unk_10)(struct MSCUnk3* unk);
+   void (*unk_14)(struct MSCUnk3* unk);
+   void (*unk_18)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_1c)(struct MSCUnk3* unk);
+   float (*get_variable)(struct MSCUnk3* unk, uint32_t variable);
+   void (*set_variable)(struct MSCUnk3* unk, uint32_t variable, float value);
+   void (*unk_28)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_2c)(struct MSCUnk3* unk);
+   void (*unk_30)(struct MSCUnk3* unk);
+   void (*unk_34)(struct MSCUnk3* unk);
+   void (*unk_38)(struct MSCUnk3* unk);
+   void (*unk_3c)(struct MSCUnk3* unk);
+   void (*unk_40)(struct MSCUnk3* unk);
+   void (*unk_44)(struct MSCUnk3* unk);
+   void (*unk_48)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_4c)(struct MSCUnk3* unk);
+   void (*unk_50)(struct MSCUnk3* unk);
+   void (*unk_54)(struct MSCUnk3* unk);
+   void (*unk_58)(struct MSCUnk3* unk);
+   void (*unk_5c)(struct MSCUnk3* unk);
+   void (*unk_60)(struct MSCUnk3* unk);
+   void (*unk_64)(struct MSCUnk3* unk);
+   void (*unk_68)(struct MSCUnk3* unk);
+   void (*unk_6c)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_70)(struct MSCUnk3* unk);
+   void (*unk_74)(struct MSCUnk3* unk);
+   void (*unk_78)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_7c)(struct MSCUnk3* unk);
+   void (*unk_80)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_84)(struct MSCUnk3* unk);
+   void (*unk_88)(struct MSCUnk3* unk);
+   void (*unk_8c)(struct MSCUnk3* unk);
+   void (*unk_90)(struct MSCUnk3* unk);
+   void (*unk_94)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_98)(struct MSCUnk3* unk);
+   void (*unk_9c)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_a0)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_a4)(struct MSCUnk3* unk);
+   void (*unk_a8)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_ac)(struct MSCUnk3* unk);
+   void (*unk_b0)(struct MSCUnk3* unk);
+   void (*unk_b4)(struct MSCUnk3* unk);
+   void (*unk_b8)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_bc)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_c0)(struct MSCUnk3* unk);
+   void (*unk_c4)(struct MSCUnk3* unk);
+   void (*unk_c8)(struct MSCUnk3* unk);
+   void (*unk_cc)(struct MSCUnk3* unk);
+   void (*unk_d0)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_d4)(struct MSCUnk3* unk);
+   void (*unk_d8)(struct MSCUnk3* unk);
+   void (*unk_dc)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_e0)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_e4)(struct MSCUnk3* unk);
+   void (*unk_e8)(struct MSCUnk3* unk);
+   void (*unk_ec)(struct MSCUnk3* unk);
+   void (*unk_f0)(struct MSCUnk3* unk); // nullptr?
+   void (*unk_f4)(struct MSCUnk3* unk); // nullptr?
+} MSCUnkVtable1;
+
+typedef struct MSCUnk3
+{
+   MSCUnkVtable1* unk_vtable_0;
+} MSCUnk3;
+
+typedef struct
+{
+   uint32_t unk_0[0x1c41];
+   MSCUnk3* unk_7104;
+} MSCUnk2;
+
 typedef struct
 {
    uint32_t unk_0;
-   uint32_t* unk_4_variable_related;
+   MSCUnk2* unk_4;
+} MSCUnk1;
+
+typedef struct
+{
+   MSCUnk1* unk_0_variable_related;
+   uint32_t unk_4;
    void *active_function;
    uint32_t args[3];
    uint32_t* arg_stack;
@@ -41,21 +125,21 @@ enum MSCInput
 
 enum MSCDigitalAxisInput
 {
-   TAUNT_SIDE = 0x1,
-   TAUNT_UP   = 0x2,
-   TAUNT_DOWN = 0x4,
-   SMASH_UP_OR_DOWN = 0x10,
-   SMASH_DASH_ATTACK = 0x20,
-   SMASH_LEFT_OR_RIGHT = 0x40,
+   TAUNT_SIDE           = 0x1,
+   TAUNT_UP             = 0x2,
+   TAUNT_DOWN           = 0x4,
+   SMASH_UP_OR_DOWN     = 0x10,
+   SMASH_DASH_ATTACK    = 0x20,
+   SMASH_LEFT_OR_RIGHT  = 0x40,
    MOVING_LEFT_OR_RIGHT = 0x80,
-   STICK_UP = 0x100,
-   STICK_DOWN = 0x200,
-   STICK_DOWN_FORWARD = 0x400,
-   STICK_DOWN_BACKWARD = 0x800,
+   STICK_UP             = 0x100,
+   STICK_DOWN           = 0x200,
+   STICK_DOWN_FORWARD   = 0x400,
+   STICK_DOWN_BACKWARD  = 0x800,
    
-   ACCELERATE_FORWARD = 0x4000,
-   ACCELERATE_BACKWARD = 0x8000,
-   ACCELERATE_DOWNWARD = 0x10000,
+   ACCELERATE_FORWARD   = 0x4000,
+   ACCELERATE_BACKWARD  = 0x8000,
+   ACCELERATE_DOWNWARD  = 0x10000,
 };
 
 enum MSCDigitalButtonInput
