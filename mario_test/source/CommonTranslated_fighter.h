@@ -58,6 +58,21 @@ enum MSCDigitalAxisInput
    ACCELERATE_DOWNWARD = 0x10000,
 };
 
+enum MSCDigitalButtonInput
+{
+   BUTTON_ATTACK_DOWN  = 0x1,
+   BUTTON_ATTACK_UP    = 0x2,
+   BUTTON_SPECIAL_DOWN = 0x4,
+   BUTTON_SPECIAL_UP   = 0x8,
+   BUTTON_JUMP_DOWN    = 0x10,
+   BUTTON_JUMP_UP      = 0x20,
+   BUTTON_SHIELD_DOWN  = 0x40,
+   BUTTON_SHIELD_UP    = 0x80,
+   
+   BUTTON_GRAB_DOWN = BUTTON_SHIELD_DOWN | BUTTON_ATTACK_DOWN,
+   BUTTON_GRAB_UP   = BUTTON_SHIELD_UP | BUTTON_ATTACK_UP,
+};
+
 typedef struct CommonTranslated_fighter
 {
    void** funbox_init;
@@ -104,7 +119,7 @@ typedef struct CommonTranslated_fighter
    uint32_t unk_a4;
    uint32_t unk_a8;
    uint32_t unk_ac;
-   uint32_t unk_b0_input_frames; //Has ~4 bits for attack, special attack, jump, shield, grab
+   uint32_t button_input; //MSCDigitalButtonInput
    uint32_t unk_b4;
    uint32_t unk_b8;
    uint32_t unk_bc;
