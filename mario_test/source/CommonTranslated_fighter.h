@@ -1,7 +1,7 @@
 #include <stdint.h>
 
 // BD3A88
-typedef struct
+typedef struct WorkModuleImplVtable
 {
    void (*unk_0)(struct MSCUnk3* unk); // nullptr?
    void (*unk_4)(struct MSCUnk3* unk); // nullptr?
@@ -29,7 +29,7 @@ typedef struct
    void (*variable_isub)(struct MSCUnk3* unk, uint32_t variable, int32_t value_tosub);
    void (*variable_imul)(struct MSCUnk3* unk, uint32_t variable, int32_t value_tomul);
    void (*variable_idiv)(struct MSCUnk3* unk, uint32_t variable, int32_t value_todiv);
-   bool (*variable_iceil_dec)(struct MSCUnk3* unk, uint32_t variable, int32_t ceil); // decrements until variable <= ceil, then returns true
+   int (*variable_iceil_dec)(struct MSCUnk3* unk, uint32_t variable, int32_t ceil); // decrements until variable <= ceil, then returns true
    void (*unk_6c)(struct MSCUnk3* unk); // nullptr?
    void (*unk_70)(struct MSCUnk3* unk); // bit check related
    void (*unk_74)(struct MSCUnk3* unk); // bit set related
@@ -65,23 +65,57 @@ typedef struct
    void (*unk_ec)(struct MSCUnk3* unk);
    void (*unk_f0)(struct MSCUnk3* unk); // nullptr?
    void (*unk_f4)(struct MSCUnk3* unk); // nullptr?
-} MSCUnkVtable1;
+} WorkModuleImplVtable;
 
-typedef struct MSCUnk3
+typedef struct WorkModuleImpl
 {
-   MSCUnkVtable1* unk_vtable_0;
-} MSCUnk3;
+   WorkModuleImplVtable* vtable;
+} WorkModuleImpl;
+
+typedef struct ArticleModuleImpl
+{
+   
+} ArticleModuleImpl;
+
+typedef struct MotionModuleImpl
+{
+   
+} MotionModuleImpl;
+
+typedef struct KineticModuleImpl
+{
+} KineticModuleImpl;
+
+typedef struct GroundModuleImpl
+{
+} GroundModuleImpl;
+
+typedef struct ControlModuleImpl
+{
+} ControlModuleImpl;
+
+typedef struct StatusModuleImpl
+{
+   
+} StatusModuleImpl;
 
 typedef struct
 {
-   uint32_t unk_0[0x1c41];
-   MSCUnk3* unk_7104;
-} MSCUnk2;
+   uint32_t unk_0[0x1c3f];
+   StatusModuleImpl* statusModuleImpl;
+   ControlModuleImpl* controlModuleImpl;
+   WorkModuleImpl* workModuleImpl;
+   GroundModuleImpl* groundModuleImpl;
+   void* unk_710c;
+   KineticModuleImpl* kineticModule; // can also be FighterKineticModuleImpl
+   MotionModuleImpl* motionModule;
+   ArticleModuleImpl* articleModule;
+} ModuleAccessor;
 
 typedef struct
 {
-   uint32_t unk_0;
-   MSCUnk2* unk_4;
+   uint32_t* unk_0;
+   ModuleAccessor* moduleAccessor;
 } MSCUnk1;
 
 typedef struct
