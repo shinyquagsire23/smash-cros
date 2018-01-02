@@ -11,23 +11,23 @@ typedef struct
    void (*unk_14)(struct MSCUnk3* unk);
    void (*unk_18)(struct MSCUnk3* unk); // nullptr?
    void (*unk_1c)(struct MSCUnk3* unk);
-   float (*get_variable)(struct MSCUnk3* unk, uint32_t variable);
-   void (*set_variable)(struct MSCUnk3* unk, uint32_t variable, float value);
+   float (*variable_fget)(struct MSCUnk3* unk, uint32_t variable);
+   void (*variable_fset)(struct MSCUnk3* unk, uint32_t variable, float value);
    void (*unk_28)(struct MSCUnk3* unk); // nullptr?
-   void (*unk_2c)(struct MSCUnk3* unk);
-   void (*unk_30)(struct MSCUnk3* unk);
-   void (*unk_34)(struct MSCUnk3* unk);
-   void (*unk_38)(struct MSCUnk3* unk);
-   void (*unk_3c)(struct MSCUnk3* unk);
-   void (*unk_40)(struct MSCUnk3* unk);
-   void (*unk_44)(struct MSCUnk3* unk);
+   void (*variable_frand)(struct MSCUnk3* unk);
+   void (*variable_fadd)(struct MSCUnk3* unk, uint32_t variable, float value_toadd);
+   void (*variable_fsub)(struct MSCUnk3* unk, uint32_t variable, float value_tosub);
+   void (*variable_fmul)(struct MSCUnk3* unk, uint32_t variable, float value_tomul);
+   void (*variable_fdiv)(struct MSCUnk3* unk, uint32_t variable, float value_todiv);
+   void (*variable_iget)(struct MSCUnk3* unk);
+   void (*variable_iset)(struct MSCUnk3* unk);
    void (*unk_48)(struct MSCUnk3* unk); // nullptr?
-   void (*unk_4c)(struct MSCUnk3* unk);
-   void (*unk_50)(struct MSCUnk3* unk);
-   void (*unk_54)(struct MSCUnk3* unk);
-   void (*unk_58)(struct MSCUnk3* unk);
-   void (*unk_5c)(struct MSCUnk3* unk);
-   void (*unk_60)(struct MSCUnk3* unk);
+   void (*variable_irand)(struct MSCUnk3* unk);
+   void (*variable_iinc)(struct MSCUnk3* unk);
+   void (*variable_idec)(struct MSCUnk3* unk);
+   void (*variable_iadd)(struct MSCUnk3* unk);
+   void (*variable_imul)(struct MSCUnk3* unk);
+   void (*variable_idiv)(struct MSCUnk3* unk);
    void (*unk_64)(struct MSCUnk3* unk);
    void (*unk_68)(struct MSCUnk3* unk);
    void (*unk_6c)(struct MSCUnk3* unk); // nullptr?
