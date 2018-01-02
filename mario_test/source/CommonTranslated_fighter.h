@@ -39,11 +39,23 @@ enum MSCInput
    INPUT_GRAB_BUTTON = INPUT_GRAB | INPUT_SHIELD | INPUT_ATTACK_NEUTRAL,
 };
 
-enum MSCTaunt
+enum MSCDigitalAxisInput
 {
    TAUNT_SIDE = 0x1,
    TAUNT_UP   = 0x2,
    TAUNT_DOWN = 0x4,
+   SMASH_UP_OR_DOWN = 0x10,
+   SMASH_DASH_ATTACK = 0x20,
+   SMASH_LEFT_OR_RIGHT = 0x40,
+   MOVING_LEFT_OR_RIGHT = 0x80,
+   STICK_UP = 0x100,
+   STICK_DOWN = 0x200,
+   STICK_DOWN_FORWARD = 0x400,
+   STICK_DOWN_BACKWARD = 0x800,
+   
+   ACCELERATE_FORWARD = 0x4000,
+   ACCELERATE_BACKWARD = 0x8000,
+   ACCELERATE_DOWNWARD = 0x10000,
 };
 
 typedef struct CommonTranslated_fighter
@@ -57,7 +69,7 @@ typedef struct CommonTranslated_fighter
    uint32_t unk_18;
    uint32_t unk_1c;
    uint32_t unk_20;
-   uint32_t unk_24;
+   float shield_health;
    uint32_t unk_28;
    uint32_t unk_2c;
    uint32_t unk_30;
@@ -85,7 +97,7 @@ typedef struct CommonTranslated_fighter
    uint32_t unk_88;
    uint32_t unk_8c;
    uint32_t unk_90;
-   uint32_t taunt_input; // MSCTaunt
+   uint32_t axis_input; // MSCDigitalAxisInput
    float stick_y;
    uint32_t unk_9c;
    uint32_t unk_a0;
